@@ -69,10 +69,10 @@ describe('event routes', () => {
 
   it('gets all events', async() => {
     const events = await Event.create([
-      { recipeId: '1234', dateOfEvent: Date.now(), rating: 3 },
-      { recipeId: '3456', dateOfEvent: Date.now(), rating: 2 },
-      { recipeId: '2345', dateOfEvent: Date.now(), rating: 3 },
-      { recipeId: '6544', dateOfEvent: Date.now(), rating: 5 },
+      { recipeId: cookieRecipe.id, dateOfEvent: Date.now(), rating: 3 },
+      { recipeId: cookieRecipe.id, dateOfEvent: Date.now(), rating: 2 },
+      { recipeId: cookieRecipe.id, dateOfEvent: Date.now(), rating: 3 },
+      { recipeId: cookieRecipe.id, dateOfEvent: Date.now(), rating: 5 },
     ]);
 
     return request(app)
@@ -86,7 +86,7 @@ describe('event routes', () => {
 
   it('gets an event by id', async() => {
     const event = await Event.create({
-      recipeId: '1234',
+      recipeId: cookieRecipe.id,
       dateOfEvent: Date.now(),
       notes: 'It went well',
       rating: 4
@@ -97,7 +97,7 @@ describe('event routes', () => {
       .then(res => {
         expect(res.body).toEqual({
           _id: expect.any(String),
-          recipeId: '1234',
+          recipeId: cookieRecipe.id,
           dateOfEvent: expect.any(String),
           notes: 'It went well',
           rating: 4,
@@ -108,7 +108,7 @@ describe('event routes', () => {
 
   it('updates an event by id', async() => {
     const event = await Event.create({
-      recipeId: '1234',
+      recipeId: cookieRecipe.id,
       dateOfEvent: Date.now(),
       notes: 'It went well',
       rating: 4
@@ -120,7 +120,7 @@ describe('event routes', () => {
       .then(res => {
         expect(res.body).toEqual({
           _id: expect.any(String),
-          recipeId: '1234',
+          recipeId: cookieRecipe.id,
           dateOfEvent: expect.any(String),
           notes: 'It went well',
           rating: 5,
@@ -131,7 +131,7 @@ describe('event routes', () => {
 
   it('deletes an event by id', async() => {
     const event = await Event.create({
-      recipeId: '1234',
+      recipeId: cookieRecipe.id,
       dateOfEvent: Date.now(),
       notes: 'It went well',
       rating: 4
@@ -142,7 +142,7 @@ describe('event routes', () => {
       .then(res => {
         expect(res.body).toEqual({
           _id: expect.any(String),
-          recipeId: '1234',
+          recipeId: cookieRecipe.id,
           dateOfEvent: expect.any(String),
           notes: 'It went well',
           rating: 4,
