@@ -101,7 +101,7 @@ describe('recipe routes', () => {
     return request(app)
       .get(`/api/v1/recipes/${cookieRecipe._id}`)
       .then(res => {
-        expect(res.body).toEqual({
+        expect(res.body).toEqual(expect.objectContaining({
           _id: cookieRecipe._id.toString(),
           name: 'cookies',
           ingredients: [
@@ -113,9 +113,8 @@ describe('recipe routes', () => {
             'put dough on cookie sheet',
             'bake for 10 minutes'
           ],
-          events: JSON.parse(JSON.stringify(cookieRecipeEvents)),
           __v: 0
-        });
+        }));
       });
   });
 
@@ -158,7 +157,7 @@ describe('recipe routes', () => {
     return request(app)
       .delete(`/api/v1/recipes/${cookieRecipe._id}`)
       .then(res => {
-        expect(res.body).toEqual({
+        expect(res.body).toEqual(expect.objectContaining({
           _id: cookieRecipe._id.toString(),
           name: 'cookies',
           ingredients: [
@@ -170,9 +169,8 @@ describe('recipe routes', () => {
             'put dough on cookie sheet',
             'bake for 10 minutes'
           ],
-          events: JSON.parse(JSON.stringify(cookieRecipeEvents)),
           __v: 0
-        });
+        }));
       });
   });
 });
