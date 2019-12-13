@@ -97,7 +97,7 @@ describe('event routes', () => {
       .then(res => {
         expect(res.body).toEqual({
           _id: expect.any(String),
-          recipeId: cookieRecipe.id,
+          recipeId: JSON.parse(JSON.stringify(cookieRecipe)),
           dateOfEvent: expect.any(String),
           notes: 'It went well',
           rating: 4,
